@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :movies
   get 'categories/index'
 
   resources :reviews
@@ -6,5 +8,5 @@ Rails.application.routes.draw do
   get 'movies/index'
 
   resources :posts
-  root 'posts#index'
+  root 'movies#index'
 end

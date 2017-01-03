@@ -3,7 +3,13 @@
 one:
   title: MyString
   description: MyText
+  length: MyString
+  director: MyString
+  rating: MyString
 
 two:
   title: MyString
   description: MyText
+  length: MyString
+  director: MyString
+  rating: MyString
