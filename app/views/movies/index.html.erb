@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Movies</h1>
-
+<!-- <h1>Movies</h1>
 <table>
   <thead>
     <tr>
@@ -14,7 +13,7 @@
     </tr>
   </thead>
 
-  <tbody>
+<tbody>
     <% @movies.each do |movie| %>
       <tr>
         <td><%= movie.title %></td>
@@ -30,6 +29,26 @@
   </tbody>
 </table>
 
-<br>
+<br> -->
+
+<section id="all_movies" class="clearfix">
+  <div class="wrapper">
+    <header class="clearfix">
+      <h1>Movies</h1>
+    </header>
+
+    <div class="row">
+        <% @movies.each do |movie| %>
+      <div class="post">
+        <img src="" alt="" />
+        <h2><%= link_to movie.title, movie %></h2>
+        <!-- <h2><%= movie.title %></h2> -->
+        <p class="post_info"><%= movie.rating %> | <%= movie.length %></p>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+  </section>
 
 <%= link_to 'New Movie', new_movie_path %>

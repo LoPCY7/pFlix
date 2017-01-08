@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
+<!-- <p>
   <strong>Title:</strong>
   <%= @movie.title %>
 </p>
@@ -23,7 +23,32 @@
 <p>
   <strong>Rating:</strong>
   <%= @movie.rating %>
-</p>
+</p> -->
+
+<section id="banner" class="clearfix">
+  <div id="banner_content_wrapper">
+    <div id="poster">
+      <!-- <img src="#" alt="Movie Poster" class="featured_image"/> -->
+      <%= image_tag @movie.image.url(:medium), class: "featured_image", alt: "Movie Poster" %>
+      <img src="#" alt="Play" class="play_button"/>
+    </div>
+    <div id="content">
+      <h2 class="title"><%= @movie.title %></h2>
+      <div class="ratings">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star inactive"></i>
+      </div>
+      <p class="description"><%= @movie.description %></p>
+
+      <p class="info"><%= @movie.rating %><span>|</span> <%= @movie.length %> <span>|</span> Movie Genre<span>|</span> Release date</p>
+    </div>
+  </div>
+</section>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
+
+<%= render 'movies/top' %>
