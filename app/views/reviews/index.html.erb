@@ -1,7 +1,0 @@
-<% @reviews.each do |review| %>
-	<h2><%= review.title %></h2>
-	<div><b>Rating: <%= review.rating %></b></div>
-	<div><%= truncate(review.body, :length => 35) %></div>
-	<br>
-	<%= link_to "Read Review", review %>
-<% end %>

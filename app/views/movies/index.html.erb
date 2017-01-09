@@ -40,9 +40,8 @@
     <div class="row">
         <% @movies.each do |movie| %>
       <div class="post">
-        <img src="" alt="" />
-        <h2><%= link_to movie.title, movie %></h2>
-        <!-- <h2><%= movie.title %></h2> -->
+        <%=link_to image_tag(movie.image.url(:medium), alt: "Poster"), movie%>
+        <h2><%= movie.title %></h2>
         <p class="post_info"><%= movie.rating %> | <%= movie.length %></p>
       </div>
       <% end %>

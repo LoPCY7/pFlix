@@ -48,7 +48,31 @@
   </div>
 </section>
 
+<section id="reviews" class="clearfix">
+  <% if @reviews.blank? %>
+    <h3>No reviews</h3>
+  <% else %>
+    <% @reviews.each do |review| %>
+      <div class="posted_reviews">
+        <p><%= review.title %></p>
+        <p><%= review.body %></p>
+        <div class="star-rating" data-score= <%= review.rating %></div>
+      </div>
+      <% end %>
+    <% end %>
+</section>
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
+<%= link_to 'Write a Review', new_movie_review_path(@movie) %>
 
 <%= render 'movies/top' %>
+
+<script>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>

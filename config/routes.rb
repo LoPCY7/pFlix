@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :movies
+  resources :movies do
+    resources :reviews, except: [:show, :index]
+  end
   get 'categories/index'
 
-  resources :reviews
 
   get 'movies/index'
 
