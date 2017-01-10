@@ -35,12 +35,14 @@
     <div id="content">
       <h2 class="title"><%= @movie.title %></h2>
       <div class="ratings">
+        <!-- <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star inactive"></i>
+        <i class="fa fa-star inactive"></i> -->
+        <div class="star-rating" data-score= <%=@avg_review %> </div>
       </div>
+      <p><em><%= "#{@reviews.length} reviews" %></em></p>
       <p class="description"><%= @movie.description %></p>
 
       <p class="info"><%= @movie.rating %><span>|</span> <%= @movie.length %> <span>|</span> Movie Genre<span>|</span> Release date</p>
