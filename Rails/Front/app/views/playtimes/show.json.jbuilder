@@ -1,0 +1,1 @@
+json.partial! "playtimes/playtime", playtime: @playtime

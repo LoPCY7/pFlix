@@ -1,0 +1,32 @@
+<%= form_for(playtime) do |f| %>
+  <% if playtime.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(playtime.errors.count, "error") %> prohibited this playtime from being saved:</h2>
+
+      <ul>
+      <% playtime.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :userid %>
+    <%= f.number_field :userid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :movieid %>
+    <%= f.text_field :movieid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :movie_time %>
+    <%= f.text_field :movie_time %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

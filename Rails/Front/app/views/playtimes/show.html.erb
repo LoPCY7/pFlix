@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Userid:</strong>
+  <%= @playtime.userid %>
+</p>
+
+<p>
+  <strong>Movieid:</strong>
+  <%= @playtime.movieid %>
+</p>
+
+<p>
+  <strong>Movie time:</strong>
+  <%= @playtime.movie_time %>
+</p>
+
+<%= link_to 'Edit', edit_playtime_path(@playtime) %> |
+<%= link_to 'Back', playtimes_path %>

@@ -8,8 +8,8 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/Rails/Front/db/*.sqlite3
-/Rails/Front/db/*.sqlite3-journal
+/db/*.sqlite3
+/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -22,5 +22,5 @@
 
 /VideoServer/data/*
 
-/Rails/Front/public/assets/*
-/Rails/Front/public/system/*
+/public/assets/*
+/public/system/*

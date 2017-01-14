@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Playtimes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Userid</th>
+      <th>Movieid</th>
+      <th>Movie time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @playtimes.each do |playtime| %>
+      <tr>
+        <td><%= playtime.userid %></td>
+        <td><%= playtime.movieid %></td>
+        <td><%= playtime.movie_time %></td>
+        <td><%= link_to 'Show', playtime %></td>
+        <td><%= link_to 'Edit', edit_playtime_path(playtime) %></td>
+        <td><%= link_to 'Destroy', playtime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Playtime', new_playtime_path %>

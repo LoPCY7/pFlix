@@ -5,10 +5,10 @@ services:
   mongodb:
     image: mongo
   app:
-    build: .
+    build: Rails/Front
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/var/www/pFlix
+      - ./Rails/Front:/var/www/pFlix
     expose:
       - "3000"
     depends_on:
@@ -21,12 +21,14 @@ services:
     build: VideoServer
     volumes:
       - ./VideoServer/data:/data
+    links:
+      - app
     ports:
       - "83:80"
   web:
       build:
-        context: .
-        dockerfile: Dockerfile-nginx
+        context: ./Rails/Front
+        dockerfile: Dockerfile-Proxy
       links:
         - app
       ports:
