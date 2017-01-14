@@ -1,0 +1,33 @@
+version: '2'
+services:
+  pgdb:
+    image: postgres
+  mongodb:
+    image: mongo
+  app:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/var/www/pFlix
+    expose:
+      - "3000"
+    depends_on:
+      - pgdb
+      - mongodb
+    environment:
+      - STRIPE_PUBLISHABLE_KEY=!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      - STRIPE_SECRET_KEY=!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  videoserver:
+    build: VideoServer
+    volumes:
+      - ./VideoServer/data:/data
+    ports:
+      - "83:80"
+  web:
+      build:
+        context: .
+        dockerfile: Dockerfile-nginx
+      links:
+        - app
+      ports:
+        - "81:80"

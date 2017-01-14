@@ -1,0 +1,14 @@
+#subscription_plans {
+  padding: 5em 0;
+  header {
+    padding: 0 0 1.5em 0;
+  }
+  .row {
+    width: 100%;
+    .plan {
+      width: 14%;
+      float: left;
+      margin-right: 2.5%;
+    }
+  }
+}

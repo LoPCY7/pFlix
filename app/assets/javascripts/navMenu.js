@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
 
   $('.menu').click(function(e) {
     e.stopPropagation();

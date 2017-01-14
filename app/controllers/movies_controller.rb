@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
+  before_action :check_subscription
 
   # GET /movies
   # GET /movies.json
@@ -11,18 +12,27 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @recommendedMovies = Movie.order(avg_rating: :desc).limit(6)
+    # @movies = Movie.last(6).reverse
+    @movies = Movie.all.desc('_id').limit(6)
+
     @reviews=Review.where(movie_id: @movie.id).order("created_at DESC")
 
     if @reviews.blank?
       @avg_review=0
     else
-      @avg_review=@reviews.average(:rating).round(2)
+      @avg_review=@reviews.avg(:rating).round(2)
+      if @avg_review != @movie.avg_rating
+        @movie.avg_rating=@avg_review
+        @movie.save
+      end
     end
   end
 
   # GET /movies/new
   def new
-    @movie = current_user.movies.build
+    # @movie = current_user.movies.build
+    @movie = Movie.new
   end
 
   # GET /movies/1/edit
@@ -32,7 +42,8 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    @movie = current_user.movies.build(movie_params)
+    # @movie = current_user.movies.build(movie_params)
+    @movie = Movie.new(movie_params)
 
     respond_to do |format|
       if @movie.save
@@ -75,8 +86,14 @@ class MoviesController < ApplicationController
       @movie = Movie.find(params[:id])
     end
 
+    def check_subscription
+      if current_user.subscribed != true
+        redirect_to subscribe_index_path, notice: "You need to subscribe!"
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :length, :director, :rating, :image)
+      params.require(:movie).permit(:title, :description, :length, :director, :rating, :genre, :releaseDate, :image, :url, :background)
     end
 end

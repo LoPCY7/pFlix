@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
+  resources :plans
+  resources :categories
+  resources :shows
+  resources :subscribe
   devise_for :users
   resources :movies do
     resources :reviews, except: [:show, :index]
@@ -9,5 +15,5 @@ Rails.application.routes.draw do
   get 'movies/index'
 
   resources :posts
-  root 'movies#index'
+  root 'home#index'
 end

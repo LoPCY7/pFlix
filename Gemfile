@@ -17,8 +17,7 @@ gem 'coffee-rails', '~> 4.2'
 
 #TRY TO DELETE AFTERWARDS
 gem 'devise', '~> 4.2'
-gem 'coffee-script-source', '1.8.0'
-gem 'paperclip'
+gem 'mongoid-paperclip'
 ############################
 
 # Use jquery as the JavaScript library
@@ -32,6 +31,13 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#Databases
+	gem 'pg'
+	gem 'mongoid'
+
+#Payment system (Stripe)
+	gem 'stripe'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -43,11 +49,9 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
-  gem 'sqlite3'
 end
 
 group :production do
-	gem 'pg'
 	gem 'rails_12factor'
 end
 

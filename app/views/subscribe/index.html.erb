@@ -1,0 +1,37 @@
+<section id="subscription_plans" class="clearfix">
+  <div class="wrapper">
+    <header class="clearfix">
+      <h1>Subscriptions</h1>
+    </header>
+
+<div class="plans-description">
+  <p>In order to be able to watch our movies, you need to subscribe to our plan. More plans to come soon!</p>
+  <p><b>Full Plan:</b> With this plan, you can all latest the movies as soon as they are out!</p>
+</div>
+  <div class="row">
+<%= form_tag subscribe_path(1), method: :put do %>
+
+
+<% @plans.each do |plan| %>
+<div class="plan">
+  <h2><%= plan[:name] %></h2>
+  <p>£<%= plan[:amount]/100 %></p>
+
+  <%= form_tag('/new', {method: :post, plan: plan}) do %>
+    <input name="plan_id" type="hidden" value="<%= plan[:id] %>">
+    </input>
+  <% end %>
+
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month’s subscription"
+          data-email=<%=current_user.email%>
+          data-amount= (plan[:amount])
+          data-locale="auto"></script>
+          </div>
+<% end %>
+
+<% end %>
+</div>
+</div>
+</section>

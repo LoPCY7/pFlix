@@ -1,97 +1,38 @@
-<!-- <section id="recommended"></section> -->
-
 <section id="top_movies" class="clearfix">
   <div class="wrapper">
     <header class="clearfix">
-      <h2>Popular Movies</h2>
-      <p class="view_more"><%= link_to 'View All Movies', movies_path %></p>
+      <h2>Recommended Movies</h2>
     </header>
 
     <div class="row">
+      <% @recommendedMovies.each do |movie| %>
       <div class="post">
-        <img src="" alt="" />
-        <h3>The Movie</h3>
-        <p class="post_info">pg and minutes</p>
+        <%=link_to image_tag(movie.image.url(:medium), alt: "Poster"), movie%>
+        <h2><%= movie.title %></h2>
+        <p class="post_info"><%= movie.rating %> | <%= movie.length %></p>
       </div>
-
-      <div class="post">
-        <img src="" alt="" />
-        <h3>The Movie</h3>
-        <p class="post_info">pg and minutes</p>
-      </div>
-
-      <div class="post">
-        <img src="" alt="" />
-        <h3>The Movie</h3>
-        <p class="post_info">pg and minutes</p>
-      </div>
-
-      <div class="post">
-        <img src="" alt="" />
-        <h3>The Movie</h3>
-        <p class="post_info">pg and minutes</p>
-      </div>
-
-      <div class="post">
-        <img src="" alt="" />
-        <h3>The Movie</h3>
-        <p class="post_info">pg and minutes</p>
-      </div>
-
-      <div class="post">
-        <img src="" alt="" />
-        <h3>The Movie</h3>
-        <p class="post_info">pg and minutes</p>
-      </div>
+      <% end %>
     </div>
 
   </div>
   </section>
 
-  <section id="top_shows"  class="clearfix">
-    <div class="wrapper">
-      <header class="clearfix">
-        <h2>Popular Shows</h2>
-        <p class="view_more">View All Shows</p>
-      </header>
+<section id="latest_movies" class="clearfix">
+  <div class="wrapper">
+    <header class="clearfix">
+      <h2>Latest Movies</h2>
+      <p class="view_more"><%= link_to 'View All Movies', movies_path %></p>
+    </header>
 
-      <div class="row">
-        <div class="post">
-          <img src="" alt="" />
-          <h3>The Movie</h3>
-          <p class="post_info">pg and minutes</p>
-        </div>
-
-        <div class="post">
-          <img src="" alt="" />
-          <h3>The Movie</h3>
-          <p class="post_info">pg and minutes</p>
-        </div>
-
-        <div class="post">
-          <img src="" alt="" />
-          <h3>The Movie</h3>
-          <p class="post_info">pg and minutes</p>
-        </div>
-
-        <div class="post">
-          <img src="" alt="" />
-          <h3>The Movie</h3>
-          <p class="post_info">pg and minutes</p>
-        </div>
-
-        <div class="post">
-          <img src="" alt="" />
-          <h3>The Movie</h3>
-          <p class="post_info">pg and minutes</p>
-        </div>
-
-        <div class="post">
-          <img src="" alt="" />
-          <h3>The Movie</h3>
-          <p class="post_info">pg and minutes</p>
-        </div>
+    <div class="row">
+      <% @movies.each do |movie| %>
+      <div class="post">
+        <%=link_to image_tag(movie.image.url(:medium), alt: "Poster"), movie%>
+        <h2><%= movie.title %></h2>
+        <p class="post_info"><%= movie.rating %> | <%= movie.length %></p>
       </div>
-
+      <% end %>
     </div>
+
+  </div>
   </section>
