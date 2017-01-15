@@ -1,4 +1,6 @@
 #!/bin/bash
 
-cd ..
+cd ~/pFlix/
 docker-compose restart app
+cd Scripts
+./restartProxyServer.sh

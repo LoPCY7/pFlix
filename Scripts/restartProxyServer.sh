@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd ..
+cd ~/pFlix/
 docker-compose restart web
