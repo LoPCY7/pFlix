@@ -24,3 +24,4 @@
 
 /Rails/Front/public/assets/*
 /Rails/Front/public/system/*
+/Rails/Front/tmp/*
