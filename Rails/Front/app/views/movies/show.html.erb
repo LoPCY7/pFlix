@@ -35,7 +35,7 @@
 		  var icon = $('.play_button');
 		  icon.click(function() {
 				$("#banner_contents").toggle(400);
-				var url ="http://localhost:83/<%= @movie.url %>/manifest.mpd";
+				var url ="http://pflix.cloudapp.net:83/<%= @movie.url %>/manifest.mpd";
 				var video = document.querySelector("#videoPlayer");
 				var player = dashjs.MediaPlayer().create();
 				player.initialize(video, url, true);
