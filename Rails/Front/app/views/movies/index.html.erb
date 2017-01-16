@@ -37,11 +37,10 @@
 
     <div class="row">
         <% @movies.each do |movie| %>
+		<div class="post">
         <% if current_user.id == 1%>
         <%= link_to 'Delete Movie', movie, method: :delete, data: { confirm: 'Are you sure?' }  %>
         <% end %>
-        <p class="star-rating" data-score= <%= movie.avg_rating %></p>
-      <div class="post">
         <%=link_to image_tag(movie.image.url(:medium), alt: "Poster"), movie%>
         <h2><%= movie.title %></h2>
         <p class="post_info"><%= movie.rating %> | <%= movie.length %> | <%= movie.genre %></p>

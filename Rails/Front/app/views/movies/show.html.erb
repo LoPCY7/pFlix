@@ -70,32 +70,16 @@ $(document).on('turbolinks:before-cache', function() {
 		  });
 		});
 		</script>
-		<script>
-		function Exit() {
-				Stop();
-				document.body.onunload = "";
-				document.body.onbeforeunload ="";
-			};
-			function Stop() {
-				// store video time
-				ct = document.getElementById('videoPlayer').currentTime;
-				var req = new XMLHttpRequest();
-				req.open("POST","/time/{{.Uuid}}", false);
-				req.setRequestHeader("content-type","application/x-www-form-urlencoded");
-				req.send("time="+ct);
-			};
-			window.onunload=Exit;
-			window.onbeforeunload=Exit;
-			</script>
 		<style>
 			video {
 				width: 860px;
 				height: 480px;
+				margin-left: 25%;
 			}
 		</style>
 
 <section id="banner" class="clearfix" style="background: url(<%=@movie.background.url(:bg)%>);">
-
+<div style="background-color: rgba(0, 0, 0, 0.5);">
 	<video id="videoPlayer" controls="true"></video>
 	<div id="banner_contents">
   <div id="banner_content_wrapper">
@@ -115,6 +99,7 @@ $(document).on('turbolinks:before-cache', function() {
       <p class="info"><%= @movie.rating %><span>|</span> <%= @movie.length %> <span>|</span> <%= @movie.genre %> <span>|</span> <%= @movie.releaseDate %> </p>
     </div>
   </div>
+</div>
 </div>
 </section>
 
